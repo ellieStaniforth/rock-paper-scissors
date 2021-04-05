@@ -1,7 +1,7 @@
 class GamePlaysController < ApplicationController
 
   def index
-    render json: GamePlay.page(params[:page])
+    render json: GamePlay.page(params[:page]), adapter: :json, meta: { total: GamePlay.count }
   end
 
   def create
