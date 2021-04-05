@@ -1,11 +1,9 @@
 class GamePlaysController < ApplicationController
 
-  #get histroy
   def index
     render json: GamePlay.page(params[:page])
   end
 
-  #post request
   def create
     gamePlay = GamePlay.new(game_play_params)
 
