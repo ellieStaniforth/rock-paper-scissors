@@ -2,25 +2,24 @@ class GamePlaysController < ApplicationController
 
   #get histroy
   def index
-    render json: GamePlay.all
+    render json: GamePlay.page(params[:page])
   end
 
   #post request
   def create
     computer_move = computer_move()
-    gamePlay = GamePlay.new(
-      guest_player: params[:name],
-      guest_move: params[:move], 
-      computer: 'bot',
-      computer_move: computer_move,
-      winner: winner(params[:move], computer_move)
-    )
+    gamePlay = GamePlay.new(game_play_params)
 
     if gamePlay.save
       render json: gamePlay
     else
       render json: gamePlay.errors, status: :bad_request
     end
+  end
+  #private
+
+  def game_play_params
+    params.require(:game_play).permit(:guest_player, :guest_move)
   end
 
   def computer_move()
