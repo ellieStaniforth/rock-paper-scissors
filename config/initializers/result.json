@@ -1,0 +1,13 @@
+{
+  "moves": [
+    {
+      "name": "Ponky",
+      "move": "rock"
+    },
+    {
+      "name": "Bot",
+      "move": "scissor"
+    }
+  ],
+  "result": "Ponky wins"
+}

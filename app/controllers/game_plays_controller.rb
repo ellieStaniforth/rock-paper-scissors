@@ -2,24 +2,7 @@ class GamePlaysController < ApplicationController
 
   #get histroy
   def index
-    gamePlays = GamePlay.all
-    render json: gamePlays.map{|gameplay| serialize_plays(gameplay)}
-  end
-
-  def serialize_plays(gameplay)
-    ({
-      "moves": [
-        {
-          "name": gameplay.guest_player,
-          "move": gameplay.guest_move
-        },
-        {
-          "name": gameplay.computer,
-          "move": gameplay.computer_move
-        }
-      ],
-      "result": gameplay.winner
-    })
+    render json: GamePlay.all
   end
 
   #post request
