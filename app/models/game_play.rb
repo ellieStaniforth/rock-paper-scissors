@@ -2,7 +2,7 @@ class GamePlay < ApplicationRecord
   paginates_per 5
   MOVES = ['rock', 'paper', 'scissor'].freeze
   validates :guest_move, inclusion: { in: MOVES }
-  #todo validate presnece of name
+  validates :guest_player, presence: true
 
   before_create do
     self.computer_move = MOVES.sample
