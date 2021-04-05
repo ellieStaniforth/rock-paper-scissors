@@ -4,12 +4,12 @@ class GamePlaySerializer < ActiveModel::Serializer
     def moves
         [
             {
-              "name": object.guest_player,
-              "move": object.guest_move
+              'name': object.guest_player,
+              'move': object.guest_move
             },
             {
-              "name": object.computer,
-              "move": object.computer_move
+              'name': 'bot',
+              'move': object.computer_move
             }
           ]
     end
