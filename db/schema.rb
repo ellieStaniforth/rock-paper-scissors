@@ -10,14 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_120229) do
+ActiveRecord::Schema.define(version: 2021_04_05_181055) do
 
   create_table "game_plays", force: :cascade do |t|
     t.string "guest_player"
     t.string "guest_move"
-    t.string "computer"
     t.string "computer_move"
-    t.string "winner"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
