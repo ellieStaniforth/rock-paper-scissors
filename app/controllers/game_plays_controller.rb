@@ -2,8 +2,8 @@ class GamePlaysController < ApplicationController
 
   #get histroy
   def index
-    @gamePlays = GamePlay.all
-    render json: @gamePlays.map{|gameplay| serialize_plays(gameplay)}
+    gamePlays = GamePlay.all
+    render json: gamePlays.map{|gameplay| serialize_plays(gameplay)}
   end
 
   def serialize_plays(gameplay)
@@ -25,13 +25,19 @@ class GamePlaysController < ApplicationController
   #post request
   def create
     computer_move = computer_move()
-    @gamePlay = GamePlay.create(
+    gamePlay = GamePlay.new(
       guest_player: params[:name],
       guest_move: params[:move], 
       computer: 'bot',
       computer_move: computer_move,
       winner: winner(params[:move], computer_move)
     )
+
+    if gamePlay.save
+      render json: gamePlay
+    else
+      render json: gamePlay.errors, status: :bad_request
+    end
   end
 
   def computer_move()
