@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+You should have already installed:
 
-* Ruby version
+- Ruby from .ruby-version file
+- sqlite3
 
-* System dependencies
+## Local Installation
 
-* Configuration
+### 1. Clone Github repo and install Ruby gems
 
-* Database creation
+`bundle install`
 
-* Database initialization
+### 2. Set up db
 
-* How to run the test suite
+`rails db:migrate`
 
-* Services (job queues, cache servers, search engines, etc.)
+### 3. Launch server
 
-* Deployment instructions
+`rails s`
 
-* ...
+### 4. Run the tests to know everthing is working fine:
+
+`bundle exec rspec`
+
+## To Play the game 
+
+Send a post request to `http://localhost:3000/game_plays`. The body of the request should follow the following .json format:
+
+{
+"game_play": {
+	"guest_player": "name",
+	"guest_move": "rock"/"paper"/"scissor"
+	}
+}
+
+## To see game histroy
+
+Send a get request to `http://localhost:3000/game_plays`. Returns a list of players, moves played and who won. Plus total number of games played.
+
+### Have fun!
+
